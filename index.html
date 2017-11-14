@@ -36,7 +36,7 @@
                 <label for="taskTitle">Intitulé de la tâche</label>
             </div>
             <div class="col m4 offset-m5">
-                <button v-on:click="addTask(newTitle)" v-on:submit.prevent class="waves-effect waves-light btn">Ajouter</button>
+                <button v-on:click="addTask(newTitle, $event)" class="waves-effect waves-light btn">Ajouter</button>
             </div>
         </form>
     </fieldset>

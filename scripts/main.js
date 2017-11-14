@@ -15,7 +15,8 @@
             deleteTask(i) {
                 return this.tasks.splice(i, 1)
             },
-            addTask(title) {
+            addTask(title, e) {
+                e.preventDefault();
                 return this.tasks.push({title: title, isDone: false})
             }
         },
