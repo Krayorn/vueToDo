@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Inclusion des Google Fonts + le framework CSS Materialize.css -->
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.css">
+
+    <!-- Style de l'application -->
+    <style>
+        .link-delete {
+            color: crimson;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .link-delete:hover {
+            color: darkred;
+        }
+    </style>
+
+    <title>Vue.js todolist</title>
+</head>
+<body>
+
+<main id="app" class="container">
+
+    <h3>Ajouter une tâche</h3>
+
+    <fieldset>
+        <form class="row">
+            <div class="input-field col m6 offset-m3">
+                <input v-model='newTitle' type="text">
+                <label for="taskTitle">Intitulé de la tâche</label>
+            </div>
+            <div class="col m4 offset-m5">
+                <button v-on:click="addTask(newTitle)" v-on:submit.prevent class="waves-effect waves-light btn">Ajouter</button>
+            </div>
+        </form>
+    </fieldset>
+
+    <h3>Liste des tâches</h3>
+
+    <p>Il reste <strong>{{remainingTasks.length}} tâche</strong> sur <strong>{{tasks.length}}</strong> à effectuer.</p>
+
+    <ul class="collection">
+        <li class="collection-item" v-for="(task, i) in tasks">
+                <input v-model='task.isDone' type="checkbox" :id="i" :checked="task.isDone">
+                <label :for="i">{{task.title}}</label>
+                <a href="#" v-on:click="deleteTask(i)" class="link-delete" title="Supprimer cette tâche">
+                    <i class="small material-icons">delete_forever</i>
+                </a>
+        </li>
+    </ul>
+
+</main><!-- Fin de l'app Vue.js -->
+
+<!-- Inclusion des scripts nécessaires au fonctionnement de Materialize (ceci inclus jQuery) -->
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="scripts/main.js"></script>
+
+</body>
+</html>
