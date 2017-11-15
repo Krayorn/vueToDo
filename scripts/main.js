@@ -11,9 +11,9 @@
             deleteTask(i) {
                 return this.tasks.splice(i, 1)
             },
-            addTask(title) {
+            addTask() {
+                this.tasks.push({title: this.newTitle, isDone: false})
                 this.newTitle = ""
-                return this.tasks.push({title: title, isDone: false})
             }
         },
         computed: {

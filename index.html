@@ -30,7 +30,7 @@
     <h3>Ajouter une tâche</h3>
 
     <fieldset>
-        <form v-on:submit.prevent="addTask(newTitle)" class="row">
+        <form v-on:submit.prevent="addTask" class="row">
             <div class="input-field col m6 offset-m3">
                 <input v-model='newTitle' type="text">
                 <label for="taskTitle">Intitulé de la tâche</label>
