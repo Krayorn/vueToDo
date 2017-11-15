@@ -36,7 +36,7 @@
                 <label for="taskTitle">Intitulé de la tâche</label>
             </div>
             <div class="col m4 offset-m5">
-                <button class="waves-effect waves-light btn">Ajouter</button>
+                <button :disabled="newTaskTitle == ''" class="waves-effect waves-light btn">Ajouter</button>
             </div>
         </form>
     </fieldset>
@@ -44,6 +44,10 @@
     <h3>Liste des tâches</h3>
 
     <p>Il reste <strong>{{remainingTasks | pluralize('tâche') }}</strong> sur <strong>{{tasks.length}}</strong> à effectuer.</p>
+
+    <span v-if="remainingTasks == 0">
+        No more tasks to do
+    </span>
 
     <ul class="collection">
         <li class="collection-item" v-for="(task, i) in tasks">
