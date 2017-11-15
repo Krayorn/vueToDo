@@ -32,7 +32,7 @@
     <fieldset>
         <form v-on:submit.prevent="addTask" class="row">
             <div class="input-field col m6 offset-m3">
-                <input v-model='newTitle' type="text">
+                <input v-model='newTaskTitle' type="text">
                 <label for="taskTitle">Intitulé de la tâche</label>
             </div>
             <div class="col m4 offset-m5">
@@ -43,7 +43,7 @@
 
     <h3>Liste des tâches</h3>
 
-    <p>Il reste <strong>{{remainingTasks.length}} tâche</strong> sur <strong>{{tasks.length}}</strong> à effectuer.</p>
+    <p>Il reste <strong>{{remainingTasks | pluralize('tâche') }}</strong> sur <strong>{{tasks.length}}</strong> à effectuer.</p>
 
     <ul class="collection">
         <li class="collection-item" v-for="(task, i) in tasks">
