@@ -5,18 +5,14 @@
         el : '#app',
         data : {
             newTitle : '',
-            tasks : [
-                { title: 'Declencher Damien', isDone: true },
-                { title: 'Embeter Cécile', isDone: true },
-                { title: 'Manger Papou', isDone: false }
-            ]
+            tasks : JSON.parse(localStorage.getItem('data')) || []
         },
         methods: {
             deleteTask(i) {
                 return this.tasks.splice(i, 1)
             },
-            addTask(title, e) {
-                e.preventDefault();
+            addTask(title) {
+                this.newTitle = ""
                 return this.tasks.push({title: title, isDone: false})
             }
         },
@@ -24,6 +20,11 @@
             remainingTasks(){
                 return this.tasks.filter(task => !task.isDone)
             }
-        }
+        },
+        watch : {
+            remainingTasks() {
+                localStorage.setItem('data', JSON.stringify(this.tasks))
+            }
+          }
     })
 }

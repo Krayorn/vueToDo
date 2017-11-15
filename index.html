@@ -30,13 +30,13 @@
     <h3>Ajouter une tâche</h3>
 
     <fieldset>
-        <form class="row">
+        <form v-on:submit.prevent="addTask(newTitle)" class="row">
             <div class="input-field col m6 offset-m3">
                 <input v-model='newTitle' type="text">
                 <label for="taskTitle">Intitulé de la tâche</label>
             </div>
             <div class="col m4 offset-m5">
-                <button v-on:click="addTask(newTitle, $event)" class="waves-effect waves-light btn">Ajouter</button>
+                <button class="waves-effect waves-light btn">Ajouter</button>
             </div>
         </form>
     </fieldset>
