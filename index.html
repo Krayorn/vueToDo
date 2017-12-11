@@ -29,17 +29,7 @@
 
     <h3>Ajouter une tâche</h3>
 
-    <fieldset>
-        <form v-on:submit.prevent="addTask" class="row">
-            <div class="input-field col m6 offset-m3">
-                <input v-model='newTaskTitle' type="text">
-                <label for="taskTitle">Intitulé de la tâche</label>
-            </div>
-            <div class="col m4 offset-m5">
-                <button :disabled="newTaskTitle == ''" class="waves-effect waves-light btn">Ajouter</button>
-            </div>
-        </form>
-    </fieldset>
+    <add-task @event-add-task='addTask' ></add-task>
 
     <h3>Liste des tâches</h3>
 
@@ -50,13 +40,7 @@
     </span>
 
     <ul class="collection">
-        <li class="collection-item" v-for="(task, i) in tasks">
-                <input v-model='task.isDone' type="checkbox" :id="i" :checked="task.isDone">
-                <label :for="i">{{task.title}}</label>
-                <a href="#" v-on:click="deleteTask(i)" class="link-delete" title="Supprimer cette tâche">
-                    <i class="small material-icons">delete_forever</i>
-                </a>
-        </li>
+        <todo-item v-for="(task, i) in tasks" :task=task :index=i @event-supress="deleteTask(i)" ></todo-item>
     </ul>
 
 </main><!-- Fin de l'app Vue.js -->
